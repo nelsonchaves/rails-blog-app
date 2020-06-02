@@ -1,6 +1,7 @@
 class PublicController < ApplicationController
 
-    def homepage
-    end
-    
+  def homepage
+    @posts = Post.all
+  end
+
 end
