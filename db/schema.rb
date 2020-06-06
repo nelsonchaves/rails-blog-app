@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_063103) do
+ActiveRecord::Schema.define(version: 2020_06_06_003838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "name", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -31,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_063103) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
+    t.integer "views", default: 0
     t.index ["category_id"], name: "index_posts_on_category_id"
   end
 
